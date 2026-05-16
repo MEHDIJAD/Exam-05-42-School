@@ -43,7 +43,7 @@ const std::string &bigint::getDigits() const {
 
 bigint bigint::operator+(const bigint &other) const
 {
-	std::string resString = "";
+	std::string resStr = "";
 	int i = this->_digits.length() - 1;
 	int j = other._digits.length() - 1;
 	int carry = 0;
@@ -53,15 +53,15 @@ bigint bigint::operator+(const bigint &other) const
 		int d1 = (i >= 0) ? this->_digits[i] - '0' : 0;
 		int d2 = (j >= 0) ? other._digits[j] - '0' : 0;
 		int sum = d1 + d2 + carry;
-		resString += (sum % 10) + '0';
+		resStr += (sum % 10) + '0';
 		carry = sum / 10;
 
 		i--;
 		j--;
 	}
-	std::reverse(resString.begin(), resString.end());
+	std::reverse(resStr.begin(), resStr.end());
 	bigint result;
-	result._digits = resString;
+	result._digits = resStr;
 	return result;
 }
 
